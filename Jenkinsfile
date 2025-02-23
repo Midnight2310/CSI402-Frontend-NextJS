@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Build"
                 script {
-                    bat " docker build -t csi402labapprouterj:latest ."
+                    bat " docker build -t csi402labapprouterj ."
                 }
             }
         }
