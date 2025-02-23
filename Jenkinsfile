@@ -19,6 +19,10 @@ pipeline {
         stage('Build') {
             steps {
                 print "Build"
+                script{
+                    sh "docker build -t Frontend",
+                    sh " docker create --name CSI403 Frontend:latest"
+                }
             }
         }
         stage('Deploy Image') {
