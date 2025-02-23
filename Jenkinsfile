@@ -19,12 +19,12 @@ pipeline {
             steps {
                 echo "Docker Build Image"
                 script {
-                    bat " docker build -t csi402labapprouterj ."
+                    bat " docker build -t csi-402j ."
                 }
 
                 echo("Docker Image Running")
                 script {
-                    bat " docker run -d --name CSI403-frontend -p 5400:3000 csi402labapprouterj:latest"
+                    bat " docker run -d --name CSI403-frontend -p 5400:3000 csi-402j:latest"
                 }
             }
         }
