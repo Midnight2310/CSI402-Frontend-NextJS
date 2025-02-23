@@ -27,13 +27,16 @@ pipeline {
             steps {
                 echo "Deploy Image"
                 script {
-                    sh "docker run -d --name CSI403-Front -p 3000:3005 csi403labapprouter:latest"
+                    sh " docker create --name CSI403-Front csi403labapprouter:latest"
                 }
             }
         }
         stage('Testing') {
             steps {
                 echo "Testing"
+                script {
+                    sh "docker run -d --name CSI403-Front -p 3000:3005 csi403labapprouter:latest"
+                }
                 // Add actual test commands here, e.g., running automated tests.
             }
         }
