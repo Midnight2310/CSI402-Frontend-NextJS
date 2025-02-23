@@ -20,9 +20,9 @@ pipeline {
             steps {
                 print "Build"
                 script{
-                    sh "docker build -t appRouter ",
-                        sh"docker create --name CSI403-Front appRouter:latest",
-                        sh" docker run -d --name CSI403-Front -p 3000:3005 appRouter:latest"
+                    sh "docker build -t csi403labapprouter ",
+                        sh"docker create --name CSI403-Front csi403labapprouter:latest",
+                        sh" docker run -d --name CSI403-Front -p 3000:3005 csi403labapprouter:latest"
                 }
             }
         }
