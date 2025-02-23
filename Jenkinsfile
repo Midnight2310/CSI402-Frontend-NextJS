@@ -15,28 +15,13 @@ pipeline {
                 echo "Checkout done"
             }
         }
-        stage('Build') {
+        stage('Build Docker Image') {
             steps {
-                echo "Docker Build Image"
                 script {
-                    bat " docker build -t csi402labapprouterj ."
-                }
+                    bat 'docker build -t csi402-app-image .'
 
-                echo("Docker Image Running")
-                script {
-                    bat " docker run -d --name CSI403-frontend -p 5400:3000 csi402labapprouterj:latest"
+                    bat 'docker run -d --name csi-container -p 54100:3000 csi402-app-image:latest'
                 }
-            }
-        }
-        stage('Deploy Image') {
-            steps {
-                echo "Deploy Image"
-            }
-        }
-        stage('Testing') {
-            steps {
-                echo "Testing"
-                // Add actual test commands here, e.g., running automated tests.
             }
         }
     }
