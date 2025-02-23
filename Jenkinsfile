@@ -19,7 +19,7 @@ pipeline {
             steps {
                 echo "Build"
                 script {
-                    sh "docker build -t csi402labapprouterj:latest"
+                    bat "docker build -t csi402labapprouterj:latest"
                 }
             }
         }
@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "Deploy Image"
                 script {
-                    sh " docker create --name CSI403-Front csi402labapprouterj:latest"
+                    bat " docker create --name CSI403-Front csi402labapprouterj:latest"
                 }
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 echo "Testing"
                 script {
-                    sh "docker run -d --name CSI403-Front -p 3000:3005 csi402labapprouterj:latest"
+                    bat "docker run -d --name CSI403-Front -p 3000:3005 csi402labapprouterj:latest"
                 }
                 // Add actual test commands here, e.g., running automated tests.
             }
