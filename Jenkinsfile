@@ -19,8 +19,7 @@ pipeline {
             steps {
                 echo "Build"
                 script {
-                    sh "docker build -t csi403labapprouter:latest .",
-                        sh " docker create --name CSI403-Front csi403labapprouter:latest:latest"
+                    sh "docker build -t csi403labapprouter:latest ."
                 }
             }
         }
