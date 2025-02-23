@@ -1,39 +1,40 @@
-//65054924 ปิยย์กฤษณ์ วงศ์เกษมศักดิ์
 pipeline {
     agent any
     stages {
         stage('Checkout') {
             steps {
-                print "Checkout"
+                echo "Checkout"
                 checkout([
                     $class: 'GitSCM',
                     branches: [[name: '*/main']],
-                    userRemoteConfigs: [ [
-                    credentialsId: 'Nine',
-                    url: 'https://github.com/Midnight2310/CSI402-Frontend-NextJS.git'
-                ] ]
+                    userRemoteConfigs: [[
+                        credentialsId: 'Nine',
+                        url: 'https://github.com/Midnight2310/CSI402-Frontend-NextJS.git'
+                    ]]
                 ])
-                print "Checkout done"
+                echo "Checkout done"
             }
         }
         stage('Build') {
             steps {
-                print "Build"
-                script{
-                    sh "docker build -t csi403labapprouter",
-                        sh "docker create --name CSI403-Front csi403labapprouter:latest",
-                        sh "docker run -d --name CSI403-Front -p 3000:3005 csi403labapprouter:latest"
+                echo "Build"
+                script {
+                    sh "docker build -t csi403labapprouter:latest ."
                 }
             }
         }
         stage('Deploy Image') {
             steps {
-                print "Deploy Image"
+                echo "Deploy Image"
+                script {
+                    sh "docker run -d --name CSI403-Front -p 3000:3005 csi403labapprouter:latest"
+                }
             }
         }
         stage('Testing') {
             steps {
-                print "Testing"
+                echo "Testing"
+                // Add actual test commands here, e.g., running automated tests.
             }
         }
     }
