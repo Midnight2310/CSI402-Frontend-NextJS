@@ -45,15 +45,11 @@ pipeline {
             	])
 		
 			print "Install Robot"
-			bat 'curl -sS https://bootstrap.pypa.io/get-pip.py -o get-pip.py'
-	                bat 'python3 get-pip.py'
+                script {
 	                bat 'pip3 install robotframework'
-	                print "Install Selenium Library"
-	                bat 'pip3 install robotframework-seleniumlibrary'
-			print "Verify Robot Framework installation"
-	                bat 'pip3 show robotframework'
-	                print "Run Robot Framework Tests"
-	                bat 'python3 -m robot testSPU.robot'
+	                bat 'pip3 install --upgrade robotframework-seleniumlibrary'
+	                bat 'robot testSPU.robot'
+                }
 		
             }
         }
