@@ -28,16 +28,12 @@ pipeline {
 			        ]  ]
             	])
 		
-			stage('Install Robot') {
-                steps {
-                    script {
-                        bat 'pip3 install robotframework'
-                        bat 'pip3 install --upgrade robotframework-seleniumlibrary'
-                        bat 'robot testSPU.robot'
-                            }
-                        }
-                    }
-
+			print "Install Robot"
+                script {
+	                bat 'pip3 install robotframework'
+	                bat 'pip3 install --upgrade robotframework-seleniumlibrary'
+	                bat 'robot testSPU.robot'
+                }
 		
             }
         }
