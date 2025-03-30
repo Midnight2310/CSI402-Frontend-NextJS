@@ -24,5 +24,13 @@ pipeline {
                 }
             }
         }
+        stage('Create robotframework') {
+            steps {
+                script {
+                    bat 'pip install robotframework'
+                    bat 'pip install --upgrade robotframework-seleniumlibrary'
+                }
+            }
+        }
     }
 }

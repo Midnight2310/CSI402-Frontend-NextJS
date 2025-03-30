@@ -1,0 +1,8 @@
+services:
+  backend:
+    image: "csi402spumember1"
+    ports:
+      - "30100:3000"
+
+  frontend:
+    build: .
