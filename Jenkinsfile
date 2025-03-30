@@ -30,8 +30,8 @@ pipeline {
 		
 			print "Install Robot"
                 script {
-	                bat 'pip install robotframework'
-	                bat 'pip install --upgrade robotframework-seleniumlibrary'
+	                sh 'pip3 install robotframework'
+	                sh 'pip3 install --upgrade robotframework-seleniumlibrary'
 	                bat 'robot testSPU.robot'
                 }
 		
